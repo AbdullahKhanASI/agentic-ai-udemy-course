@@ -58,3 +58,75 @@ Be sure to monitor your API costs to ensure you are totally happy with any spend
 ### ABOVE ALL ELSE -
 
 Be sure to have fun with the course! You could not have picked a better time to be learning about Agentic AI. I hope you enjoy every single minute! And if you get stuck at any point - [contact me](https://www.linkedin.com/in/eddonner/).
+
+### Run guides by subfolder
+
+Below are concise instructions to run each subproject from the repository root. Prefer using `uv` for consistent, isolated runs.
+
+Prerequisites
+- Install uv: `pip install uv`
+- Create a `.env` in the repo root (or in the specific subfolder you run) with relevant keys:
+
+```
+OPENAI_API_KEY=sk-...
+# Optional, used where push notifications are enabled
+PUSHOVER_USER=...
+PUSHOVER_TOKEN=...
+# Optional for some projects
+GOOGLE_API_KEY=...
+GEMINI_API_KEY=...
+```
+
+If you prefer pip instead of uv, install from the provided requirements files in each folder.
+
+#### 1_foundations (Gradio personal assistant)
+- Change directory: `cd 1_foundations`
+- Dependencies: `uv run python -V` (resolves via root `pyproject.toml`) or `pip install -r requirements.txt`
+- Run: `uv run python app.py` (or `python app.py` if using pip)
+- Notes: requires `OPENAI_API_KEY`. Push notifications use `PUSHOVER_USER` and `PUSHOVER_TOKEN` (optional). Reads `me/linkedin.pdf` and `me/summary.txt`.
+
+#### 2_openai/deep_research (OpenAI Agents SDK + Gradio)
+- Change directory: `cd 2_openai/deep_research`
+- Run: `uv run python deep_research.py`
+- Notes: requires `OPENAI_API_KEY`. Optional push notifications use `PUSHOVER_*`.
+
+#### 3_crew (CrewAI projects)
+For each project below:
+1) Change directory into the project folder
+2) Ensure CrewAI CLI is installed: `uv tool install crewai` (update with `uv tool upgrade crewai`)
+3) Run: `crewai run`
+
+- coder: `cd 3_crew/coder && crewai run`
+- debate: `cd 3_crew/debate && crewai run`
+- engineering_team: `cd 3_crew/engineering_team && crewai run`
+- financial_researcher: `cd 3_crew/financial_researcher && crewai run`
+- stock_picker: `cd 3_crew/stock_picker && crewai run`
+
+Notes
+- Requires `OPENAI_API_KEY`. Some features may also use `GOOGLE_API_KEY` and `GEMINI_API_KEY`.
+- Windows users: see the CrewAI notes above in this README (Build Tools and UTF-8 env var) before running.
+
+#### 4_langgraph (Sidekick + LangGraph)
+- Change directory: `cd 4_langgraph`
+- First-time browser tooling: `uv run playwright install --with-deps chromium`
+- Run Sidekick UI: `uv run python sidekick.py`
+- Alternatively run the simple app: `uv run python app.py`
+- Notes: requires `OPENAI_API_KEY`. Uses a local SQLite checkpoint in `memory.db`.
+
+#### 5_autogen (AutoGen multi-agent)
+- Change directory: `cd 5_autogen`
+- Run: `uv run python world.py`
+- Notes: requires `OPENAI_API_KEY`. Spawns multiple agents, may create `idea*.md` files.
+
+#### 6_mcp (Model Context Protocol demos + Traders UI)
+- Change directory: `cd 6_mcp`
+- Start the UI: `uv run python app.py`
+- Optional MCP servers (each in its own terminal):
+  - Accounts: `uv run python accounts_server.py`
+  - Market: `uv run python market_server.py`
+  - Push: `uv run python push_server.py` (requires `PUSHOVER_*`)
+- Programmatic client examples are in `accounts_client.py`.
+
+### Notebooks
+- Many labs live under each numbered folder. Launch with your preferred environment, e.g.:
+  - `uv run jupyter notebook` and open the relevant `*.ipynb` files.
