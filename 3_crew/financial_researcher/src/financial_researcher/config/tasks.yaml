@@ -1,14 +1,24 @@
 # src/research_crew/config/tasks.yaml
 research_task:
   description: >
-    Conduct thorough research on company {company}. Focus on:
-    1. Current company status and health
-    2. Historical company performance
-    3. Major challenges and opportunities
-    4. Recent news and events
-    5. Future outlook and potential developments
+    Conduct thorough research on company {company}. Focus on comparative financial analysis between 2025 and 2024. Specifically research:
+    1. Current company status and health (2025)
+    2. Key financial metrics comparison: 2025 vs 2024
+       - Revenue growth year-over-year
+       - Net income and profit margins
+       - Earnings per share (EPS) comparison
+       - Operating cash flow changes
+       - Return on equity (ROE) and return on assets (ROA)
+    3. Latest quarterly results and earnings reports (Q1-Q4 2025 vs Q1-Q4 2024)
+    4. Stock performance and market capitalization changes (2025 vs 2024)
+    5. Major business developments and strategic changes between 2024-2025
+    6. Recent news and events (2025, latest available)
+    7. Future outlook and analyst projections
 
-    Make sure to organize your findings in a structured format with clear sections.
+    IMPORTANT: Search for specific terms like "{company} 2025 vs 2024 financial comparison", 
+    "{company} revenue growth 2025 2024", "{company} earnings comparison year over year",
+    "{company} financial metrics 2025 2024", and "{company} annual report 2025 2024".
+    Make sure to organize your findings in a structured format with clear sections showing year-over-year comparisons.
   expected_output: >
     A comprehensive research document with well-organized sections covering
     all the requested aspects of {company}. Include specific facts, figures,
